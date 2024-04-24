@@ -5,7 +5,6 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
-require('dotenv').config();
 const errorHandler = require('./errors/image_error');
 
 app.use(errorHandler);
