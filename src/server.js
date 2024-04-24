@@ -11,7 +11,7 @@ app.use(errorHandler);
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-const dbHost = process.env.MONGODB_URI;
+const dbHost = process.env.MONGODB_URI  || 'mongodb://localhost:27017/face_search';
 mongoose.connect(dbHost).then(() =>
     console.log("Connected to the database!")).catch((err) =>
         console.log("Cannot connect to the database!", err)
