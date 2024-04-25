@@ -10,9 +10,12 @@ const errorHandler = require('./errors/image_error');
 app.use(errorHandler);
 app.use(cors());
 app.use(bodyParser.json());
+// Increase the payload size limit to 100 MB
+app.use(bodyParser.json({ limit: '100mb' }));
+app.use(bodyParser.urlencoded({ extended: true, limit: '100mb' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 const dbHost = process.env.MONGODB_URI  || 'mongodb://localhost:27017/face_search';
-mongoose.connect("mongodb+srv://commercekv2003:20VSGx67QiXZUPMc@cluster0.lsbea0k.mongodb.net/facesearch?retryWrites=true&w=majority&appName=Cluster0").then(() =>
+mongoose.connect(dbHost).then(() =>
     console.log("Connected to the database!")).catch((err) =>
         console.log("Cannot connect to the database!", err)
     );
